@@ -31,6 +31,48 @@ public class Main extends Application {
 
         root.getChildren().add(board);
 
+        // TODO: 2019-10-30 Gör något åt det här
+        board.tiles[0][0].setOnMouseClicked(e -> swapTiles(board.tiles[0][0], board.tiles[3][3]));
+        board.tiles[0][1].setOnMouseClicked(e -> swapTiles(board.tiles[0][1], board.tiles[3][3]));
+        board.tiles[0][2].setOnMouseClicked(e -> swapTiles(board.tiles[0][2], board.tiles[3][3]));
+        board.tiles[0][3].setOnMouseClicked(e -> swapTiles(board.tiles[0][3], board.tiles[3][3]));
+        board.tiles[1][0].setOnMouseClicked(e -> swapTiles(board.tiles[1][0], board.tiles[3][3]));
+        board.tiles[1][1].setOnMouseClicked(e -> swapTiles(board.tiles[1][1], board.tiles[3][3]));
+        board.tiles[1][2].setOnMouseClicked(e -> swapTiles(board.tiles[1][2], board.tiles[3][3]));
+        board.tiles[1][3].setOnMouseClicked(e -> swapTiles(board.tiles[1][3], board.tiles[3][3]));
+        board.tiles[2][0].setOnMouseClicked(e -> swapTiles(board.tiles[2][0], board.tiles[3][3]));
+        board.tiles[2][1].setOnMouseClicked(e -> swapTiles(board.tiles[2][1], board.tiles[3][3]));
+        board.tiles[2][2].setOnMouseClicked(e -> swapTiles(board.tiles[2][2], board.tiles[3][3]));
+        board.tiles[2][3].setOnMouseClicked(e -> swapTiles(board.tiles[2][3], board.tiles[3][3]));
+        board.tiles[3][0].setOnMouseClicked(e -> swapTiles(board.tiles[3][0], board.tiles[3][3]));
+        board.tiles[3][1].setOnMouseClicked(e -> swapTiles(board.tiles[3][1], board.tiles[3][3]));
+        board.tiles[3][2].setOnMouseClicked(e -> swapTiles(board.tiles[3][2], board.tiles[3][3]));
+        board.tiles[3][3].setOnMouseClicked(e -> swapTiles(board.tiles[3][3], board.tiles[3][3]));
+    }
+
+    public void swapTiles(Tile clickedTile, Tile blankTile) {
+
+
+//        if(true) { // clikedTile ligger bredvid blanktile -> byt plats på dem.
+//
+//        }
+        int temp = board.grid.getRowIndex(clickedTile);
+        board.grid.setRowIndex(clickedTile, board.grid.getRowIndex(blankTile));
+        board.grid.setRowIndex(blankTile, temp);
+
+        temp = board.grid.getColumnIndex(clickedTile);
+        board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
+        board.grid.setColumnIndex(blankTile, temp);
+
+
+//        grid.add(temp1, 2, 2);
+//        grid.getChildren().removeAll(tiles[0][0]);
+//        grid.getChildren().removeAll(tiles[0][1]);
+
+//        Tile tempTile = tiles[1][2];
+//        tiles[1][2] = tiles[2][2];
+//        tiles[2][2] = tempTile;
+//        grid.add(temp2, 1, 2);
     }
 
 

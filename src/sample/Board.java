@@ -9,10 +9,10 @@ import java.util.List;
 public class Board extends Parent {
 
     protected List<Tile> tilesList = new ArrayList<>();
-    private Tile[][] tiles;
+    protected Tile[][] tiles;
     private int height;
     private int length;
-    private GridPane grid;
+    protected GridPane grid;
 
     public Board(int height, int length) {
 
@@ -25,7 +25,7 @@ public class Board extends Parent {
         for (int i = 0; i < tiles.length; i++) { //tiles[0].length
             for (int j = 0; j < tiles.length; j++) {
                 tiles[i][j] = new Tile(i, j, number); // Tiles skapas.
-                System.out.println(tiles[i][j].toString());
+//                System.out.println(tiles[i][j].toString());
 
 //                tiles[i][j].setOnMouseClicked(e -> {
 //                    swapTiles(1, 1);
@@ -38,18 +38,18 @@ public class Board extends Parent {
         getChildren().add(grid);
     }
 
-    public void swapTiles (int i, int j) {
-        Tile temp1 = tiles[1][2];
-        Tile temp2 = tiles[2][2];
-//        grid.getChildren().removeAll(tiles[0][0]);
-//        grid.getChildren().removeAll(tiles[0][1]);
-
-//        Tile tempTile = tiles[1][2];
-//        tiles[1][2] = tiles[2][2];
-//        tiles[2][2] = tempTile;
-        grid.add(temp1, 2, 2);
-//        grid.add(temp2, 1, 2);
-    }
+//    public void swapTiles (int i, int j) {
+//        Tile temp1 = tiles[1][2];
+//        Tile temp2 = tiles[2][2];
+////        grid.getChildren().removeAll(tiles[0][0]);
+////        grid.getChildren().removeAll(tiles[0][1]);
+//
+////        Tile tempTile = tiles[1][2];
+////        tiles[1][2] = tiles[2][2];
+////        tiles[2][2] = tempTile;
+//        grid.add(temp1, 2, 2);
+////        grid.add(temp2, 1, 2);
+//    }
 
     public void cleanBoard() {
         getChildren().remove(grid);
@@ -62,15 +62,4 @@ public class Board extends Parent {
     public void setTiles(Tile[][] tiles) {
         this.tiles = tiles;
     }
-
-    // Klicka på en tile och få dess position.
-
-
-
-
-
-
-
-
-
 }

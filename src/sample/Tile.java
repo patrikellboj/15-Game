@@ -42,9 +42,20 @@ public class Tile extends Parent { //Tile<square>
         square.setStrokeType(StrokeType.INSIDE);
     }
 
+    // Setters
+    public void setPosition(int posX, int posY) {
+        this.posX = posX;
+        this.posY = posY;
+    }
+
+    // Getters
     public int getNumber() {
         return this.number;
     }
+
+//    public int getPos() {
+//        return this.posX, this.posY
+//    }
 
     public int getPosX() {
         return this.posX;
