@@ -3,8 +3,12 @@ package sample;
 import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Board extends Parent {
 
+    protected List<Tile> tilesList = new ArrayList<>();
     private Tile[][] tiles;
     private int height;
     private int length;
@@ -18,14 +22,16 @@ public class Board extends Parent {
 
     public void fillBoardWithCells() {
         int number = 1;
-        for (int i = 0; i < tiles[0].length; i++) {
+        for (int i = 0; i < tiles.length; i++) { //tiles[0].length
             for (int j = 0; j < tiles.length; j++) {
-                tiles[i][j] = new Tile(0, 0, number);
-                tiles[i][j].setOnMouseClicked(e -> {
-                    swapTiles(1, 1);
-                });
+                tiles[i][j] = new Tile(i, j, number); // Tiles skapas.
+                System.out.println(tiles[i][j].toString());
 
-                grid.add(tiles[i][j], j, i);
+//                tiles[i][j].setOnMouseClicked(e -> {
+//                    swapTiles(1, 1);
+//                });
+                tilesList.add(tiles[i][j]); // Adda en instans av en tile (tiles[x][y]) till listan tilesList.
+                grid.add(tiles[i][j], j, i); // [i][j] , i, j addar i fel ordning.
                 number++;
             }
         }
@@ -56,6 +62,9 @@ public class Board extends Parent {
     public void setTiles(Tile[][] tiles) {
         this.tiles = tiles;
     }
+
+    // Klicka på en tile och få dess position.
+
 
 
 

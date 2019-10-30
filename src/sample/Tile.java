@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 
-public class Tile<square> extends Parent {
+public class Tile extends Parent { //Tile<square>
 
     private Rectangle square;
     private int posX;
@@ -43,13 +43,19 @@ public class Tile<square> extends Parent {
     }
 
     public int getNumber() {
-        return number;
+        return this.number;
+    }
+
+    public int getPosX() {
+        return this.posX;
+    }
+
+    public int getPosY() {
+        return this.posY;
     }
 
     @Override
     public String toString() {
-        return "Tile{" +
-                "number=" + number +
-                '}';
+        return "Tile number=" + number + " , Pos: " + this.posX + "," + this.posY;
     }
 }
