@@ -51,18 +51,21 @@ public class Main extends Application {
     }
 
     public void swapTiles(Tile clickedTile, Tile blankTile) {
+        System.out.println("ColumnIndex: " + board.grid.getColumnIndex(clickedTile) + ". RowIndex: " + board.grid.getRowIndex(clickedTile));
 
-
+//        board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) -1 &&
+//                board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)
+//
 //        if(true) { // clikedTile ligger bredvid blanktile -> byt plats på dem.
 //
 //        }
-        int temp = board.grid.getRowIndex(clickedTile);
-        board.grid.setRowIndex(clickedTile, board.grid.getRowIndex(blankTile));
-        board.grid.setRowIndex(blankTile, temp);
-
-        temp = board.grid.getColumnIndex(clickedTile);
-        board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
-        board.grid.setColumnIndex(blankTile, temp);
+//        int temp = board.grid.getRowIndex(clickedTile);
+//        board.grid.setRowIndex(clickedTile, board.grid.getRowIndex(blankTile));
+//        board.grid.setRowIndex(blankTile, temp);
+//
+//        temp = board.grid.getColumnIndex(clickedTile);
+//        board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
+//        board.grid.setColumnIndex(blankTile, temp);
 
 
 //        grid.add(temp1, 2, 2);

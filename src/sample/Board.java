@@ -24,14 +24,14 @@ public class Board extends Parent {
         int number = 1;
         for (int i = 0; i < tiles.length; i++) { //tiles[0].length
             for (int j = 0; j < tiles.length; j++) {
-                tiles[i][j] = new Tile(i, j, number); // Tiles skapas.
+                tiles[j][i] = new Tile(j, i, number); // Tiles skapas.
 //                System.out.println(tiles[i][j].toString());
 
 //                tiles[i][j].setOnMouseClicked(e -> {
 //                    swapTiles(1, 1);
 //                });
-                tilesList.add(tiles[i][j]); // Adda en instans av en tile (tiles[x][y]) till listan tilesList.
-                grid.add(tiles[i][j], j, i); // [i][j] , i, j addar i fel ordning.
+                tilesList.add(tiles[j][i]); // Adda en instans av en tile (tiles[x][y]) till listan tilesList.
+                grid.add(tiles[j][i], j, i); // [i][j] , i, j addar i fel ordning.
                 number++;
             }
         }
