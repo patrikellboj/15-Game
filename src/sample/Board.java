@@ -31,7 +31,7 @@ public class Board extends Parent {
 //                    swapTiles(1, 1);
 //                });
                 tilesList.add(tiles[j][i]); // Adda en instans av en tile (tiles[x][y]) till listan tilesList.
-                grid.add(tiles[j][i], j, i); // [i][j] , i, j addar i fel ordning.
+                grid.add(tiles[j][i], j, i);
                 number++;
             }
         }
