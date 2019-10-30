@@ -17,11 +17,8 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         BorderPane root = new BorderPane();
-
         board = new Board(400, 400);
-
         board.fillBoardWithCells();
-
         root.setPrefSize(400, 400);
         Scene scene = new Scene(root);
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -52,9 +49,7 @@ public class Main extends Application {
 
     public void swapTiles(Tile clickedTile, Tile blankTile) {
         System.out.println("ColumnIndex: " + board.grid.getColumnIndex(clickedTile) + ". RowIndex: " + board.grid.getRowIndex(clickedTile));
-
-//        board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) -1 &&
-//                board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)
+//        System.out.println(clickedTile.toString());
 
         // clikedTile ligger bredvid blanktile -> byt plats på dem.
         if(board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) -1 &&
@@ -96,18 +91,7 @@ public class Main extends Application {
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
         }
-
-
-//        grid.add(temp1, 2, 2);
-//        grid.getChildren().removeAll(tiles[0][0]);
-//        grid.getChildren().removeAll(tiles[0][1]);
-
-//        Tile tempTile = tiles[1][2];
-//        tiles[1][2] = tiles[2][2];
-//        tiles[2][2] = tempTile;
-//        grid.add(temp2, 1, 2);
     }
-
 
     public static void main(String[] args) {
         launch(args);

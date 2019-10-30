@@ -4,11 +4,13 @@ import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Board extends Parent {
 
-    protected List<Tile> tilesList = new ArrayList<>();
+    protected List<Integer> winningComboList = new ArrayList<>();
+    protected List<Integer> shuffledList = new ArrayList<>();
     protected Tile[][] tiles;
     private int height;
     private int length;
@@ -26,30 +28,20 @@ public class Board extends Parent {
             for (int j = 0; j < tiles.length; j++) {
                 tiles[j][i] = new Tile(j, i, number); // Tiles skapas.
 //                System.out.println(tiles[i][j].toString());
-
 //                tiles[i][j].setOnMouseClicked(e -> {
 //                    swapTiles(1, 1);
 //                });
-                tilesList.add(tiles[j][i]); // Adda en instans av en tile (tiles[x][y]) till listan tilesList.
+                winningComboList.add(tiles[j][i].getNumber()); // Adda en instans av en tile (tiles[x][y]) till listan tilesList.
+                shuffledList.add(tiles[j][i].getNumber());
                 grid.add(tiles[j][i], j, i);
                 number++;
             }
         }
         getChildren().add(grid);
+        Collections.shuffle(shuffledList);
+        System.out.println(winningComboList);
+        System.out.println(shuffledList);
     }
-
-//    public void swapTiles (int i, int j) {
-//        Tile temp1 = tiles[1][2];
-//        Tile temp2 = tiles[2][2];
-////        grid.getChildren().removeAll(tiles[0][0]);
-////        grid.getChildren().removeAll(tiles[0][1]);
-//
-////        Tile tempTile = tiles[1][2];
-////        tiles[1][2] = tiles[2][2];
-////        tiles[2][2] = tempTile;
-//        grid.add(temp1, 2, 2);
-////        grid.add(temp2, 1, 2);
-//    }
 
     public void cleanBoard() {
         getChildren().remove(grid);
