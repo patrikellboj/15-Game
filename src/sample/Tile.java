@@ -7,17 +7,13 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Text;
 
-public class Tile extends Parent { //Tile<square>
+public class Tile extends Parent {
 
     private Rectangle square;
-    private int posX;
-    private int posY;
     private int number;
     private boolean isEmpty;
 
-    public Tile(int posX, int posY, int number) {
-        this.posX = posX;
-        this.posY = posY;
+    public Tile(int number) {
         this.number = number;
         this.isEmpty = this.number != 16;
 
@@ -42,31 +38,8 @@ public class Tile extends Parent { //Tile<square>
         square.setStrokeType(StrokeType.INSIDE);
     }
 
-    // Setters
-    public void setPosition(int posX, int posY) {
-        this.posX = posX;
-        this.posY = posY;
-    }
-
-    // Getters
-    public int getNumber() {
-        return this.number;
-    }
-
-//    public int getPos() {
-//        return this.posX, this.posY
-//    }
-
-    public int getPosX() {
-        return this.posX;
-    }
-
-    public int getPosY() {
-        return this.posY;
-    }
-
     @Override
     public String toString() {
-        return "Tile number=" + number + " , Pos: " + this.posX + "," + this.posY;
+        return "Tile number=" + number;
     }
 }
