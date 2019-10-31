@@ -9,9 +9,9 @@ import java.util.List;
 
 public class Board extends Parent {
 
-    protected List<Integer> winningComboList = new ArrayList<>();
-    protected List<Integer> shuffledList = new ArrayList<>();
     protected Tile[][] tiles;
+    protected List<Tile> winningComboList = new ArrayList<>();
+    protected List<Tile> shuffledList = new ArrayList<>();
     private int height;
     private int length;
     protected GridPane grid;
@@ -23,35 +23,28 @@ public class Board extends Parent {
     }
 
     public void fillBoardWithCells() {
-        int number = 1;
-        for (int i = 0; i < tiles.length; i++) { //tiles[0].length
-            for (int j = 0; j < tiles.length; j++) {
-                tiles[j][i] = new Tile(j, i, number); // Tiles skapas.
-//                System.out.println(tiles[i][j].toString());
-//                tiles[i][j].setOnMouseClicked(e -> {
-//                    swapTiles(1, 1);
-//                });
-                winningComboList.add(tiles[j][i].getNumber()); // Adda en instans av en tile (tiles[x][y]) till listan tilesList.
-                shuffledList.add(tiles[j][i].getNumber());
-                grid.add(tiles[j][i], j, i);
-                number++;
+        int numberOnTile = 1;
+        int numberInList = 0;
+        for(int i = 0; i < tiles.length; i++) {
+            for(int j = 0; j < tiles.length; j++) {
+                tiles[j][i] = new Tile(numberOnTile); // Tiles skapas.
+                winningComboList.add(tiles[j][i]); // Adda en instans av en tile (tiles[x][y]) till listan.
+                shuffledList.add(tiles[j][i]);
+                numberOnTile++;
             }
         }
-        getChildren().add(grid);
         Collections.shuffle(shuffledList);
+        for(int i = 0; i < tiles.length; i++) {
+            for(int j = 0; j < tiles.length; j++) {
+                grid.setRowIndex(shuffledList.get(numberInList), i);
+                grid.setColumnIndex(shuffledList.get(numberInList), i);
+                grid.add(shuffledList.get(numberInList), i, j); // Lägg till den blandade listan till grid'en.
+                numberInList++;
+            }
+        }
+
+        getChildren().add(grid);
         System.out.println(winningComboList);
         System.out.println(shuffledList);
-    }
-
-    public void cleanBoard() {
-        getChildren().remove(grid);
-    }
-
-    public Tile[][] getTiles() {
-        return tiles;
-    }
-
-    public void setTiles(Tile[][] tiles) {
-        this.tiles = tiles;
     }
 }
