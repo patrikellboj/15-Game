@@ -38,8 +38,13 @@ public class Tile extends Parent {
         square.setStrokeType(StrokeType.INSIDE);
     }
 
+    public int getNumber() {
+        return this.number;
+    }
+
     @Override
     public String toString() {
-        return "Tile number=" + number;
+//        return "Tile number=" + this.number;
+        return "" + this.number + "";
     }
 }
