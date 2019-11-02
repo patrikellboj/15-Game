@@ -48,12 +48,21 @@ public class Board extends Parent {
         System.out.println(shuffledList);
     }
 
-    public void updateList(int i, int j) {
-        Collections.swap(shuffledList, i -1, j -1);
+    public void updateList(Tile clickedTile, Tile blankTile) {
+        int x = shuffledList.indexOf(clickedTile);
+        int y = shuffledList.indexOf(blankTile);
+        Collections.swap(shuffledList, x, y);
         System.out.println(shuffledList);
+        // Call win method
     }
 
     public void win() {
+        // Compare shuffledList to winningComboList.
+        // Om listorna är lika, visa ett meddelande att man har klarat spelet.
+        // Två knappar ska visas, "Nytt spel" och "Avsluta".
+    }
 
+    public void newGame() {
+        // rensa gamla spelplanen och kalla på fillBoardWithCells()?
     }
 }

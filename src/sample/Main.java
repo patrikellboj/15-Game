@@ -55,9 +55,8 @@ public class Main extends Application {
         temp = board.grid.getColumnIndex(clickedTile);
         board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
         board.grid.setColumnIndex(blankTile, temp);
-        board.updateList(clickedTile.getNumber(), blankTile.getNumber());
-//            System.out.println(clickedTile.getNumber());
-//            System.out.println(blankTile.getNumber());
+        board.updateList(clickedTile, blankTile);
+
         } else if(board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) +1 &&
                 board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)) {
             int temp = board.grid.getRowIndex(clickedTile);
@@ -66,9 +65,8 @@ public class Main extends Application {
             temp = board.grid.getColumnIndex(clickedTile);
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
-            board.updateList(clickedTile.getNumber(), blankTile.getNumber());
-//            System.out.println(clickedTile.getNumber());
-//            System.out.println(blankTile.getNumber());
+            board.updateList(clickedTile, blankTile);
+
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) -1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
             int temp = board.grid.getRowIndex(clickedTile);
@@ -77,9 +75,8 @@ public class Main extends Application {
             temp = board.grid.getColumnIndex(clickedTile);
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
-            board.updateList(clickedTile.getNumber(), blankTile.getNumber());
-//            System.out.println(clickedTile.getNumber());
-//            System.out.println(blankTile.getNumber());
+            board.updateList(clickedTile, blankTile);
+
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) +1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
             int temp = board.grid.getRowIndex(clickedTile);
@@ -88,9 +85,8 @@ public class Main extends Application {
             temp = board.grid.getColumnIndex(clickedTile);
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
-            board.updateList(clickedTile.getNumber(), blankTile.getNumber());
-//            System.out.println(clickedTile.getNumber());
-//            System.out.println(blankTile.getNumber());
+            board.updateList(clickedTile, blankTile);
+
         }
 //        System.out.println("ColumnIndex: " + board.grid.getColumnIndex(blankTile) + ". RowIndex: " + board.grid.getRowIndex(blankTile));
     }
