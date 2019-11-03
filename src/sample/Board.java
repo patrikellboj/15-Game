@@ -28,23 +28,40 @@ public class Board extends Parent {
         for(int i = 0; i < tiles.length; i++) {
             for(int j = 0; j < tiles.length; j++) {
                 tiles[j][i] = new Tile(numberOnTile); // Tiles skapas.
-                winningComboList.add(tiles[j][i]); // Adda en instans av en tile (tiles[x][y]) till listan.
-                shuffledList.add(tiles[j][i]);
+                winningComboList.add(tiles[j][i]); // Fyll en lista med den kombinationen som gör att man vinner.
+                shuffledList.add(tiles[j][i]); // Gör en likandan lista som sen blandas om.
                 numberOnTile++;
             }
         }
         Collections.shuffle(shuffledList);
         for(int i = 0; i < tiles.length; i++) {
             for(int j = 0; j < tiles.length; j++) {
-                grid.setRowIndex(shuffledList.get(numberInList), i);
+                grid.setRowIndex(shuffledList.get(numberInList), j);
                 grid.setColumnIndex(shuffledList.get(numberInList), i);
-                grid.add(shuffledList.get(numberInList), i, j); // Lägg till den blandade listan till grid'en.
+                grid.add(shuffledList.get(numberInList), j, i); // Lägg till den blandade listan till grid'en.
                 numberInList++;
             }
         }
-
         getChildren().add(grid);
-        System.out.println(winningComboList);
+    }
+
+    public void updateList(Tile clickedTile, Tile blankTile) {
+        int x = shuffledList.indexOf(clickedTile);
+        int y = shuffledList.indexOf(blankTile);
+        Collections.swap(shuffledList, x, y);
+    }
+
+    public void isGameCompleted() {
+        // Compare shuffledList to winningComboList.
+        // Om listorna är lika, visa ett meddelande att man har klarat spelet.
+        // Två knappar ska visas, "Nytt spel" och "Avsluta".
+        boolean isEqual = shuffledList.equals(winningComboList);
         System.out.println(shuffledList);
+        System.out.println(winningComboList);
+        System.out.println(isEqual);
+    }
+
+    public void newGame() {
+        // rensa gamla spelplanen och kalla på fillBoardWithCells()?
     }
 }

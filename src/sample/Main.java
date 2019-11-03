@@ -49,44 +49,50 @@ public class Main extends Application {
         // clikedTile ligger bredvid blanktile -> byt plats på dem.
         if(board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) -1 &&
                 board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)) {
-
         int temp = board.grid.getRowIndex(clickedTile);
         board.grid.setRowIndex(clickedTile, board.grid.getRowIndex(blankTile));
         board.grid.setRowIndex(blankTile, temp);
-
         temp = board.grid.getColumnIndex(clickedTile);
         board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
         board.grid.setColumnIndex(blankTile, temp);
+        board.updateList(clickedTile, blankTile);
+        board.isGameCompleted();
 
         } else if(board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) +1 &&
                 board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)) {
             int temp = board.grid.getRowIndex(clickedTile);
             board.grid.setRowIndex(clickedTile, board.grid.getRowIndex(blankTile));
             board.grid.setRowIndex(blankTile, temp);
-
             temp = board.grid.getColumnIndex(clickedTile);
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
+            board.updateList(clickedTile, blankTile);
+            board.isGameCompleted();
+
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) -1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
             int temp = board.grid.getRowIndex(clickedTile);
             board.grid.setRowIndex(clickedTile, board.grid.getRowIndex(blankTile));
             board.grid.setRowIndex(blankTile, temp);
-
             temp = board.grid.getColumnIndex(clickedTile);
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
+            board.updateList(clickedTile, blankTile);
+            board.isGameCompleted();
+
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) +1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
             int temp = board.grid.getRowIndex(clickedTile);
             board.grid.setRowIndex(clickedTile, board.grid.getRowIndex(blankTile));
             board.grid.setRowIndex(blankTile, temp);
-
             temp = board.grid.getColumnIndex(clickedTile);
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
+            board.updateList(clickedTile, blankTile);
+            board.isGameCompleted();
+
         }
-        System.out.println("ColumnIndex: " + board.grid.getColumnIndex(clickedTile) + ". RowIndex: " + board.grid.getRowIndex(clickedTile));
+//        System.out.println("ColumnIndex: " + board.grid.getColumnIndex(blankTile) + ". RowIndex: " + board.grid.getRowIndex(blankTile));
     }
 
     public static void main(String[] args) {
