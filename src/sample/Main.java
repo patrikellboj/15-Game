@@ -3,6 +3,7 @@ package sample;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -10,23 +11,28 @@ public class Main extends Application {
 
     Board board;
     Button newGameBtn;
+    Label label;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         newGameBtn = new Button();
         newGameBtn.setText("New Game");
-
         newGameBtn.setOnAction(e -> newGame());
+
+        label = new Label();
+        label.setText("Congratulations, you won the game!");
 
         BorderPane root = new BorderPane();
         board = new Board();
         board.fillBoardWithCells();
-        root.setPrefSize(400, 400);
         root.setTop(newGameBtn);
         root.setCenter(board);
+        root.setBottom(label);
+        label.setVisible(false);
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 400, 400);
+
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("15 Game");
         primaryStage.setScene(scene);
@@ -52,9 +58,9 @@ public class Main extends Application {
     }
 
     public void swapTiles(Tile clickedTile, Tile blankTile) {
-//        System.out.println(clickedTile.toString());
+        boolean isGameCompleted = false;
 
-        // clikedTile ligger bredvid blanktile -> byt plats på dem.
+        // om clikedTile ligger bredvid blanktile -> byt plats på dem.
         if(board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) -1 &&
                 board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)) {
         int temp = board.grid.getRowIndex(clickedTile);
@@ -64,7 +70,8 @@ public class Main extends Application {
         board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
         board.grid.setColumnIndex(blankTile, temp);
         board.updateList(clickedTile, blankTile);
-        board.isGameCompleted();
+        isGameCompleted = board.isGameCompleted();
+        label.setVisible(isGameCompleted);
 
         } else if(board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) +1 &&
                 board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)) {
@@ -75,7 +82,8 @@ public class Main extends Application {
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
             board.updateList(clickedTile, blankTile);
-            board.isGameCompleted();
+            isGameCompleted = board.isGameCompleted();
+            label.setVisible(isGameCompleted);
 
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) -1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
@@ -86,7 +94,8 @@ public class Main extends Application {
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
             board.updateList(clickedTile, blankTile);
-            board.isGameCompleted();
+            isGameCompleted = board.isGameCompleted();
+            label.setVisible(isGameCompleted);
 
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) +1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
@@ -97,15 +106,17 @@ public class Main extends Application {
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
             board.updateList(clickedTile, blankTile);
-            board.isGameCompleted();
+            isGameCompleted = board.isGameCompleted();
+            label.setVisible(isGameCompleted);
+
 
         }
-//        System.out.println("ColumnIndex: " + board.grid.getColumnIndex(blankTile) + ". RowIndex: " + board.grid.getRowIndex(blankTile));
     }
 
     public void newGame() {
         System.out.println("You clicked new game!");
         board.shuffleNewGame();
+        label.setVisible(false);
     }
 
     public static void main(String[] args) {

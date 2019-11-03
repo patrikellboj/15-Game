@@ -48,17 +48,12 @@ public class Board extends Parent {
         Collections.swap(shuffledList, x, y);
     }
 
-    public void isGameCompleted() {
-        // Compare shuffledList to winningComboList.
-        // Om listorna är lika, visa ett meddelande att man har klarat spelet.
-        // Två knappar ska visas, "Nytt spel" och "Avsluta".
-//        boolean isEqual = shuffledList.equals(winningComboList);
+    public boolean isGameCompleted() {
         System.out.println(shuffledList.equals(winningComboList));
-//        System.out.println(winningComboList);
-//        System.out.println(isEqual);
         if(shuffledList.equals(winningComboList)) {
-            System.out.println("You won the game!");
+            return true;
         }
+        return false;
     }
 
     public void shuffleNewGame() {
