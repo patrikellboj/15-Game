@@ -56,6 +56,7 @@ public class Main extends Application {
         board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
         board.grid.setColumnIndex(blankTile, temp);
         board.updateList(clickedTile, blankTile);
+        board.isGameCompleted();
 
         } else if(board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile) +1 &&
                 board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile)) {
@@ -66,6 +67,7 @@ public class Main extends Application {
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
             board.updateList(clickedTile, blankTile);
+            board.isGameCompleted();
 
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) -1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
@@ -76,6 +78,7 @@ public class Main extends Application {
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
             board.updateList(clickedTile, blankTile);
+            board.isGameCompleted();
 
         } else if(board.grid.getColumnIndex(clickedTile) == board.grid.getColumnIndex(blankTile) +1 &&
                 board.grid.getRowIndex(clickedTile) == board.grid.getRowIndex(blankTile)) {
@@ -86,6 +89,7 @@ public class Main extends Application {
             board.grid.setColumnIndex(clickedTile, board.grid.getColumnIndex(blankTile));
             board.grid.setColumnIndex(blankTile, temp);
             board.updateList(clickedTile, blankTile);
+            board.isGameCompleted();
 
         }
 //        System.out.println("ColumnIndex: " + board.grid.getColumnIndex(blankTile) + ". RowIndex: " + board.grid.getRowIndex(blankTile));

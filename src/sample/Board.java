@@ -42,24 +42,23 @@ public class Board extends Parent {
                 numberInList++;
             }
         }
-
         getChildren().add(grid);
-//        System.out.println(winningComboList);
-        System.out.println(shuffledList);
     }
 
     public void updateList(Tile clickedTile, Tile blankTile) {
         int x = shuffledList.indexOf(clickedTile);
         int y = shuffledList.indexOf(blankTile);
         Collections.swap(shuffledList, x, y);
-        System.out.println(shuffledList);
-        // Call win method
     }
 
-    public void win() {
+    public void isGameCompleted() {
         // Compare shuffledList to winningComboList.
         // Om listorna är lika, visa ett meddelande att man har klarat spelet.
         // Två knappar ska visas, "Nytt spel" och "Avsluta".
+        boolean isEqual = shuffledList.equals(winningComboList);
+        System.out.println(shuffledList);
+        System.out.println(winningComboList);
+        System.out.println(isEqual);
     }
 
     public void newGame() {
