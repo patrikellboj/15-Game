@@ -12,12 +12,9 @@ public class Board extends Parent {
     protected Tile[][] tiles;
     protected List<Tile> winningComboList = new ArrayList<>();
     protected List<Tile> shuffledList = new ArrayList<>();
-    private int height;
-    private int length;
     protected GridPane grid;
 
-    public Board(int height, int length) {
-
+    public Board() {
         this.tiles = new Tile[4][4];
         this.grid = new GridPane();
     }
@@ -55,13 +52,25 @@ public class Board extends Parent {
         // Compare shuffledList to winningComboList.
         // Om listorna är lika, visa ett meddelande att man har klarat spelet.
         // Två knappar ska visas, "Nytt spel" och "Avsluta".
-        boolean isEqual = shuffledList.equals(winningComboList);
-        System.out.println(shuffledList);
-        System.out.println(winningComboList);
-        System.out.println(isEqual);
+//        boolean isEqual = shuffledList.equals(winningComboList);
+        System.out.println(shuffledList.equals(winningComboList));
+//        System.out.println(winningComboList);
+//        System.out.println(isEqual);
+        if(shuffledList.equals(winningComboList)) {
+            System.out.println("You won the game!");
+        }
     }
 
-    public void newGame() {
-        // rensa gamla spelplanen och kalla på fillBoardWithCells()?
+    public void shuffleNewGame() {
+        int numberInList = 0;
+        Collections.shuffle(shuffledList);
+        for(int i = 0; i < tiles.length; i++) {
+            for(int j = 0; j < tiles.length; j++) {
+                grid.setRowIndex(shuffledList.get(numberInList), i);
+                grid.setColumnIndex(shuffledList.get(numberInList), j);
+                numberInList++;
+            }
+        }
+        System.out.println(shuffledList);
     }
 }

@@ -2,27 +2,35 @@ package sample;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     Board board;
+    Button newGameBtn;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        newGameBtn = new Button();
+        newGameBtn.setText("New Game");
+
+        newGameBtn.setOnAction(e -> newGame());
+
         BorderPane root = new BorderPane();
-        board = new Board(400, 400);
+        board = new Board();
         board.fillBoardWithCells();
         root.setPrefSize(400, 400);
+        root.setTop(newGameBtn);
+        root.setCenter(board);
+
         Scene scene = new Scene(root);
 //        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("15 Game");
         primaryStage.setScene(scene);
         primaryStage.show();
-
-        root.getChildren().add(board);
 
         // TODO: 2019-10-30 Gör något åt det här
         board.tiles[0][0].setOnMouseClicked(e -> swapTiles(board.tiles[0][0], board.tiles[3][3]));
@@ -93,6 +101,11 @@ public class Main extends Application {
 
         }
 //        System.out.println("ColumnIndex: " + board.grid.getColumnIndex(blankTile) + ". RowIndex: " + board.grid.getRowIndex(blankTile));
+    }
+
+    public void newGame() {
+        System.out.println("You clicked new game!");
+        board.shuffleNewGame();
     }
 
     public static void main(String[] args) {
